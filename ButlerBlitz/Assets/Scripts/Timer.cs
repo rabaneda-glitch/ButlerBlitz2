@@ -7,13 +7,13 @@ using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour
 {
-    public float timer = 60;
     public TextMeshProUGUI TimerText;
+    public float timer = 60;
     
     void Update()
     {
         timer -= Time.deltaTime;
-        TimerText.text = "" + timer.ToString("f1");
+        TimerText.text = "" + timer.ToString("f0");
 
         if (timer <= 0)
         {
