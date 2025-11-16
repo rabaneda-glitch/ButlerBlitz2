@@ -11,38 +11,38 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     private float moveSpeed;
-    public float walkSpeed;
+    public float walkSpeed = 10f;
 
-    public float sprintSpeed;
-    public float slideSpeed;
+    public float sprintSpeed = 10f;
+    public float slideSpeed = 30f;
 
-    public float wallrunSpeed;
+    public float wallrunSpeed = 8.5f;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
 
-    public float dashSpeed;
-    public float dashSpeedChangeFactor;
+    public float dashSpeed = 30f;
+    public float dashSpeedChangeFactor = 50f;
 
-    public float maxYSpeed;
+    public float maxYSpeed = 0f;
 
-    public float groundDrag;
+    public float groundDrag = 4f;
 
     [Header("Jumping")]
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
+    public float jumpForce = 8f;
+    public float jumpCooldown = 0.25f;
+    public float airMultiplier = 0.4f;
     bool readyToJump;
 
     [Header("Crouching")]
-    public float crouchSpeed;
-    public float crouchYScale;
+    public float crouchSpeed = 3.5f;
+    public float crouchYScale = 0.5f;
     private float startYScale;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode crouchKey = KeyCode.None;
 
     [Header("Ground Check")]
     public float playerHeight;

@@ -11,11 +11,11 @@ public class Sliding : MonoBehaviour
     private PlayerMovement pm;
 
     [Header("Sliding")]
-    public float maxSlideTime;
-    public float slideForce;
+    public float maxSlideTime = 0.75f;
+    public float slideForce = 200f;
     private float slideTimer;
 
-    public float slideYScale;
+    public float slideYScale = 0.5f;
     private float startYScale;
 
     [Header("Input")]
