@@ -12,7 +12,7 @@ public class Stain : MonoBehaviour
     private Renderer _renderer;
     private Collider _collider;
 
-    // 🔥 Referencia al Particle System opcional
+    //Referencia al Particle System opcional
     [SerializeField] private ParticleSystem cleanEffect;
 
     void Awake()
@@ -45,7 +45,13 @@ public class Stain : MonoBehaviour
         if (_collider != null) _collider.enabled = false;
         if (_renderer != null) _renderer.enabled = false;
 
-        // 🔥 Lanzamos el efecto si existe
+        var prog = Object.FindFirstObjectByType<Progresion>();
+        if (prog != null)
+        {
+            prog.IncrementStainsCleaned();
+        }
+
+        //Lanzamos el efecto si existe
         if (cleanEffect != null)
         {
             cleanEffect.transform.SetParent(null); // lo soltamos para que no desaparezca con la mancha

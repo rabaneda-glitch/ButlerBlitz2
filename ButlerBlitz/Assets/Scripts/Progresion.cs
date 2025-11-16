@@ -23,6 +23,7 @@ public class Progresion : MonoBehaviour
         stainsTotal = Object.FindObjectsByType<Stain>(FindObjectsSortMode.None).Length;
         stainsCleaned = 0;
         st = Object.FindFirstObjectByType<Stain>();
+        Debug.Log(st.gameObject.name);
     }
 
     void Update()
@@ -32,12 +33,11 @@ public class Progresion : MonoBehaviour
         {
             if (stainsTotal > 0)
                 loadingText.text = Mathf.RoundToInt((stainsCleaned / stainsTotal) * 100) + "%";
-            else
-                loadingText.text = "100%"; //Arreglar esto
         }
 
         else
         {
+            loadingText.text = "100%";
             Debug.Log("Todo limpio");
         }
     }
