@@ -15,6 +15,8 @@ public class Stain : MonoBehaviour
     //Referencia al Particle System opcional
     [SerializeField] private ParticleSystem cleanEffect;
 
+    public AudioSource cleanSound;
+
     void Awake()
     {
         _renderer = GetComponent<Renderer>();
@@ -51,7 +53,13 @@ public class Stain : MonoBehaviour
             prog.IncrementStainsCleaned();
         }
 
-        //Lanzamos el efecto si existe
+        // Reproducir sonido
+        if (cleanSound != null)
+        {
+            cleanSound.Play(); // O PlayOneShot(cleanSound.clip);
+        }
+
+        // Lanzamos el efecto si existe
         if (cleanEffect != null)
         {
             cleanEffect.transform.SetParent(null); // lo soltamos para que no desaparezca con la mancha
@@ -61,4 +69,7 @@ public class Stain : MonoBehaviour
 
         Destroy(gameObject, destroyDelay);
     }
+
+
+
 }
