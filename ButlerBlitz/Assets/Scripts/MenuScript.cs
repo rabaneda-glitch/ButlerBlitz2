@@ -87,4 +87,28 @@ public class MenuScript : MonoBehaviour
         currentState = newState;
         currentState.SetActive(true);
     }
+
+    void Update()
+    {
+
+        if (Input.GetKey("return"))
+        {
+            if (mainMenu.activeSelf)
+            {
+                switchMenu(MenuStates.Levels);
+            }
+            
+        }
+        if (Input.GetKey("escape"))
+        {
+            if (mainMenu.activeSelf)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                switchMenu(MenuStates.Main);
+            }
+        }
+    }
 }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Progresion : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class Progresion : MonoBehaviour
         {
             loadingText.text = "100%";
             Debug.Log("Todo limpio");
+            SceneManager.LoadScene("EndMenu");
         }
     }
 
@@ -48,4 +50,4 @@ public class Progresion : MonoBehaviour
         loadingProgress = (stainsTotal > 0) ? (stainsCleaned / stainsTotal) : 1f;
         loadingImage.fillAmount = loadingProgress;
     }
-}  
+}
