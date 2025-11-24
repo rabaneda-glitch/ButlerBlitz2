@@ -7,9 +7,13 @@ public class SplashScreen : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("StartMenu");
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 
