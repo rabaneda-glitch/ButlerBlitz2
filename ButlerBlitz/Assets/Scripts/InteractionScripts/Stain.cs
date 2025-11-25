@@ -12,8 +12,8 @@ public class Stain : MonoBehaviour
     private Renderer _renderer;
     private Collider _collider;
 
-    //Referencia al Particle System opcional
-    [SerializeField] private ParticleSystem cleanEffect;
+    [Header("VFX")]
+    [SerializeField] private GameObject ParticleSystem;
 
     public AudioSource cleanSound;
 
@@ -22,9 +22,6 @@ public class Stain : MonoBehaviour
         _renderer = GetComponent<Renderer>();
         _collider = GetComponent<Collider>();
 
-        // Si no está asignado, lo buscamos automáticamente
-        if (cleanEffect == null)
-            cleanEffect = GetComponentInChildren<ParticleSystem>();
     }
 
     public void Interact(GameObject interactor = null)
@@ -56,15 +53,19 @@ public class Stain : MonoBehaviour
         // Reproducir sonido
         if (cleanSound != null)
         {
-            cleanSound.Play(); // O PlayOneShot(cleanSound.clip);
+            cleanSound.Play();
         }
 
-        // Lanzamos el efecto si existe
-        if (cleanEffect != null)
+        if (ParticleSystem != null)
         {
-            cleanEffect.transform.SetParent(null); // lo soltamos para que no desaparezca con la mancha
-            cleanEffect.Play();
-            Destroy(cleanEffect.gameObject, destroyDelay + 1f);
+            //Sistema de particulas en la posición de la mancha
+            GameObject vfxInstance = Instantiate(
+                ParticleSystem,
+                transform.position,
+                Quaternion.identity
+            );
+
+            Destroy(vfxInstance, destroyDelay + 1f);
         }
 
         Destroy(gameObject, destroyDelay);
